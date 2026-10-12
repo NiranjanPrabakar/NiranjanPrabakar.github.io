@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Niranjan Prabakar | Robotics Researcher</title>
 <meta name="description" content="Niranjan Prabakar is a robotics researcher at A*STAR IAIC, Singapore, working on vision-language-action models, bimanual manipulation, perception-guided planning and SLAM-based autonomy.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%278%27 fill=%27%2314243a%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Georgia,serif%27 font-size=%2732%27 fill=%27%23f2f5f8%27 text-anchor=%27middle%27%3ENP%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://niranjanprabakar.github.io/">
 <meta property="og:title" content="Niranjan Prabakar | Robotics Researcher">
 <meta property="og:description" content="Robotics researcher at A*STAR IAIC, Singapore. Vision-language-action models, bimanual manipulation, SLAM-based autonomy.">
@@ -22,6 +23,15 @@ html { background:var(--sheet); scroll-behavior:smooth; scroll-padding-top:56px;
 body { background:var(--sheet); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; margin:0; }
 a { color:var(--link); text-decoration-thickness:1px; text-underline-offset:3px; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline:2px solid var(--link); outline-offset:2px; }
+.skip { position:absolute; left:-9999px; top:0; background:var(--sheet); color:var(--fg); padding:8px 12px; z-index:10; }
+.skip:focus { left:8px; top:8px; }
+.interests { list-style:none; padding:0; margin:18px 0 0; display:flex; flex-wrap:wrap; gap:6px 22px; color:var(--muted); font-size:0.95rem; }
+.interests li::before { content:"\2022"; margin-right:8px; color:var(--link); }
+.tools { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px; align-items:center; }
+.tools button { font:inherit; font-size:0.88rem; color:var(--fg); background:transparent; border:1px solid var(--line); border-radius:3px; padding:3px 12px; cursor:pointer; }
+.tools button:hover { background:var(--soft); }
+.fine { color:var(--muted); font-size:0.88rem; margin:6px 0 0; }
+@media print { nav, .filters, .tools, .leg, .cvbtn, #copy, .bibbtn { display:none !important; } .top { background:none; color:#000; padding:0 0 12px; } .top p, .top a, .top h1 { color:#000 !important; } details.proj > :not(summary) { display:block; } section { padding-bottom:16px; } section:nth-of-type(even) { background:none; } }
 .in { max-width:860px; margin:0 auto; padding:0 24px; }
 .top { background:var(--band); color:var(--bandfg); padding:48px 0 40px; }
 .hero { display:flex; gap:32px; align-items:center; }
@@ -91,7 +101,8 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 </style>
 </head>
 <body>
-<header class="top"><div class="in hero">
+<a class="skip" href="#about">Skip to content</a>
+<header class="top" id="top"><div class="in hero">
 <img src="images/niranjan.jpg" alt="Portrait of Niranjan Prabakar" width="150" height="188">
 <div>
 <h1>Niranjan Prabakar</h1>
@@ -113,6 +124,9 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 <section id="about"><div class="in">
 <h2>Research Summary</h2>
 <p>Computer Science graduate specializing in Artificial Intelligence and Robotics, with research experience in dual arm manipulation, perception guided planning, and autonomous navigation. My work centers on generalizable robot manipulation, focusing on Vision Language Action architectures that remain robust under unseen workspace conditions, combining deep learning, computer vision, SLAM, and classical robotics methods within ROS2 based systems. This experience spans designing, developing, and deploying end to end intelligent systems whose competence extends reliably beyond controlled training conditions.</p>
+<ul class="interests" aria-label="Research interests">
+<li>Vision-language-action models</li><li>Dual-arm manipulation</li><li>Perception-guided planning with VLMs</li><li>Generalization to unseen workspaces</li><li>SLAM and autonomous navigation</li><li>Medical robotics</li>
+</ul>
 </div></section>
 
 <section id="publications"><div class="in">
@@ -150,6 +164,7 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 <section id="projects"><div class="in">
 <h2>Projects</h2>
 <p class="leg"><span><i style="background:#2f6f4e"></i>Published</span><span><i style="background:#a66a10"></i>Under review or pending</span><span><i style="background:#6b7a89"></i>In preparation</span><span><i style="background:#1a55a0"></i>Systems</span></p>
+<div class="tools"><button type="button" id="expand">Expand all</button><button type="button" id="collapse">Collapse all</button></div>
 <div class="filters" role="group" aria-label="Filter projects by status">
 <button type="button" data-f="all" aria-pressed="true">All</button>
 <button type="button" data-f="pub" aria-pressed="false">Published</button>
@@ -303,7 +318,7 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 </div></section>
 
 </main>
-<footer><div class="in">Niranjan Prabakar · Singapore</div></footer>
+<footer><div class="in"><span>Niranjan Prabakar · Singapore · <a href="mailto:niranjanprabakar325@gmail.com">niranjanprabakar325@gmail.com</a></span><p class="fine">Last updated October 2026 · <a href="#top">Back to top</a></p></div></footer>
 
 <script>
 (function () {
@@ -337,6 +352,10 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
       projs.forEach(function (p) { p.hidden = !(f === 'all' || p.getAttribute('data-s') === f); });
     });
   });
+
+  function setAll(v) { projs.forEach(function (p) { if (!p.hidden) p.open = v; }); }
+  document.getElementById('expand').addEventListener('click', function () { setAll(true); });
+  document.getElementById('collapse').addEventListener('click', function () { setAll(false); });
 
   var links = document.querySelectorAll('nav a');
   if ('IntersectionObserver' in window) {
