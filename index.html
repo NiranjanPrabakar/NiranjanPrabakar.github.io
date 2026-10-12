@@ -38,21 +38,33 @@ section:nth-of-type(even) details.proj, section:nth-of-type(even) pre.bib { back
 h2 { font-size:1.35rem; margin:36px 0 14px; padding-bottom:4px; border-bottom:1px solid var(--line); }
 p { margin:0 0 12px; }
 ul { margin:0; padding-left:20px; }
-.pubs > li { margin-bottom:16px; }
+.pubs > li { display:grid; grid-template-columns:52px minmax(0,1fr); gap:0 14px; margin-bottom:20px; }
+.pubs > li::before { content:attr(data-y); font-weight:bold; color:var(--muted); padding-top:1px; }
+.tl { list-style:none; padding:0; }
+.tl li { display:grid; grid-template-columns:150px minmax(0,1fr); gap:0 20px; margin-bottom:16px; }
+.tl .when { color:var(--muted); font-size:0.92rem; padding-top:2px; }
+.tl .ttl2 { font-weight:bold; }
+.leg { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:0.85rem; color:var(--muted); margin:0 0 14px; }
+.leg i { display:inline-block; width:10px; height:10px; margin-right:6px; vertical-align:-1px; }
 .pubs .btn { color:var(--link); margin-left:4px; padding:0 8px; font-size:0.8rem; }
 pre.bib { background:var(--code); border:1px solid var(--line); padding:10px 12px; font:0.78rem/1.45 ui-monospace, Menlo, Consolas, monospace; white-space:pre-wrap; overflow-wrap:anywhere; margin:8px 0 0; }
 .filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
 .filters button { font:inherit; font-size:0.88rem; color:var(--fg); background:transparent; border:1px solid var(--line); border-radius:3px; padding:3px 12px; cursor:pointer; }
 .filters button[aria-pressed="true"] { background:var(--band); color:var(--bandfg); border-color:var(--band); }
-details.proj { border:1px solid var(--line); border-radius:3px; margin-bottom:10px; background:var(--sheet); }
+details.proj { border:1px solid var(--line); border-left:4px solid var(--c, var(--muted)); border-radius:3px; margin-bottom:12px; background:var(--sheet); }
+details.proj[data-s="pub"] { --c:#2f6f4e; }
+details.proj[data-s="rev"] { --c:#a66a10; }
+details.proj[data-s="prep"] { --c:#6b7a89; }
+details.proj[data-s="sys"] { --c:#1a55a0; }
 details.proj[hidden] { display:none; }
-details.proj summary { cursor:pointer; padding:12px 14px; list-style:none; display:flex; flex-wrap:wrap; gap:4px 12px; justify-content:space-between; align-items:baseline; }
+details.proj summary { cursor:pointer; padding:14px 16px 14px 44px; list-style:none; position:relative; }
+details.proj summary:hover { background:var(--soft); }
 details.proj summary::-webkit-details-marker { display:none; }
-details.proj summary::before { content:"+"; font-family:ui-monospace, Menlo, monospace; color:var(--muted); width:14px; flex:none; }
+details.proj summary::before { content:"+"; position:absolute; left:16px; top:14px; font-family:ui-monospace, Menlo, monospace; color:var(--muted); }
 details.proj[open] summary::before { content:"\2212"; }
-.ttl { flex:1 1 280px; font-weight:bold; }
-.st { color:var(--muted); font-size:0.88rem; }
-.pbody { padding:2px 16px 14px 40px; border-top:1px solid var(--line); background:var(--soft); }
+.ttl { display:block; font-weight:bold; line-height:1.4; }
+.st { display:block; margin-top:5px; color:var(--muted); font-size:0.88rem; line-height:1.4; }
+.pbody { padding:2px 18px 16px 44px; border-top:1px solid var(--line); background:var(--soft); }
 .pbody p { margin:10px 0 6px; }
 .pbody ul { margin-top:4px; }
 .pbody li { margin-bottom:4px; }
@@ -66,7 +78,9 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
   .hero { flex-direction:column; align-items:flex-start; gap:20px; }
   .top { padding:32px 0 28px; }
   .skills { grid-template-columns:minmax(0,1fr); gap:0; } .skills dd { margin-bottom:10px; }
-  .pbody { padding-left:16px; }
+  .pbody { padding-left:18px; }
+  .pubs > li { grid-template-columns:minmax(0,1fr); gap:2px; }
+  .tl li { grid-template-columns:minmax(0,1fr); gap:0; }
 }
 </style>
 </head>
@@ -96,8 +110,8 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 
 <section id="publications"><div class="in">
 <h2>Publications</h2>
-<ul class="pubs" style="list-style:none;padding:0">
-<li>Prem Sankar N, <b>Niranjan Prabakar</b>, Mukunth S, Kavin Karthik V, Anita Christaline Johnvictor. <i>Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments.</i> EPJ Web of Conferences 367, 01011, 2026. Presented at the Fifth International Conference on Robotics, Intelligent Automation and Control Technologies (RIACT 2026), Vellore Institute of Technology, Chennai, India, 5 to 7 February 2026. <a href="https://doi.org/10.1051/epjconf/202636701011">[doi]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
+<ul class="pubs" style="list-style:none;padding:0;margin:0">
+<li data-y="2026"><div>Prem Sankar N, <b>Niranjan Prabakar</b>, Mukunth S, Kavin Karthik V, Anita Christaline Johnvictor. <i>Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments.</i> EPJ Web of Conferences 367, 01011, 2026. Presented at the Fifth International Conference on Robotics, Intelligent Automation and Control Technologies (RIACT 2026), Vellore Institute of Technology, Chennai, India, 5 to 7 February 2026. <a href="https://doi.org/10.1051/epjconf/202636701011">[doi]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
 <pre class="bib" hidden>@article{prem2026sar,
   title   = {Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments},
   author  = {Prem Sankar, N and Prabakar, Niranjan and Mukunth, S and Karthik, V Kavin and Johnvictor, Anita Christaline},
@@ -106,22 +120,29 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
   pages   = {01011},
   year    = {2026},
   doi     = {10.1051/epjconf/202636701011}
-}</pre></li>
-<li><b>Niranjan Prabakar</b>, Abhinav Balakrishnan, Mukunth S, Vergin Raja Sarobin M. <i>Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification.</i> IEEE ICSCSS 2025 (3rd International Conference on Sustainable Computing and Smart Systems), Coimbatore, India, 20 to 22 August 2025. <a href="https://doi.org/10.1109/ICSCSS64956.2025.11500648">[doi]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
+}</pre></div></li>
+<li data-y="2025"><div><b>Niranjan Prabakar</b>, Abhinav Balakrishnan, Mukunth S, Vergin Raja Sarobin M. <i>Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification.</i> IEEE ICSCSS 2025 (3rd International Conference on Sustainable Computing and Smart Systems), Coimbatore, India, 20 to 22 August 2025. <a href="https://doi.org/10.1109/ICSCSS64956.2025.11500648">[doi]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
 <pre class="bib" hidden>@inproceedings{prabakar2025rainfall,
   title     = {Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification},
   author    = {Prabakar, Niranjan and Balakrishnan, Abhinav and Mukunth, S and Sarobin, Vergin Raja M},
   booktitle = {3rd International Conference on Sustainable Computing and Smart Systems (ICSCSS)},
   year      = {2025},
   doi       = {10.1109/ICSCSS64956.2025.11500648}
-}</pre></li>
-<li>WKR Sachinthana, <b>Niranjan Prabakar</b>, SMBP Samarakoon, MAVJ Muthugala, Mohan Rajesh Elara. <i>Online Coverage Path Planning in LIDAR Perception Constrained Environments.</i> IEEE TENCON 2024, Marina Bay Sands, Singapore, 1 to 4 December 2024, pp. 133-136. <a href="https://ieeexplore.ieee.org/document/10903125">[ieee]</a></li>
+}</pre></div></li>
+<li data-y="2024"><div>WKR Sachinthana, <b>Niranjan Prabakar</b>, SMBP Samarakoon, MAVJ Muthugala, Mohan Rajesh Elara. <i>Online Coverage Path Planning in LIDAR Perception Constrained Environments.</i> IEEE TENCON 2024, Marina Bay Sands, Singapore, 1 to 4 December 2024, pp. 133-136. <a href="https://ieeexplore.ieee.org/document/10903125">[ieee]</a></div></li>
 </ul>
-<p class="meta" style="margin-top:14px">Under review: the hand gesture recognition study for quadruped robot control (Journal of Real-Time Image Processing, Springer), after conference presentation. Presented, publication pending: the brain tumor progression analysis paper (First IEEE International Conference on Intelligent Electronics &amp; Computational System, IECS 2026, VIT Bhopal, India, 17 to 18 July 2026). In preparation: perception-guided VLM planning for autonomous bed making, and fruit ripeness detection.</p>
+<h3 style="font-size:1.02rem;margin:26px 0 10px">Presented, under review and in preparation</h3>
+<ul class="pubs" style="list-style:none;padding:0;margin:0">
+<li data-y="2026"><div><i>Enhanced Composite Deterministic Finite Automaton with Deep Neural Segmentation and Vision-Language Synthesis for Brain Tumor Progression Analysis and Risk Stratification.</i> Presented at the First IEEE International Conference on Intelligent Electronics &amp; Computational System (IECS 2026), VIT Bhopal, India, 17 to 18 July 2026. Manuscript submitted, publication pending.</div></li>
+<li data-y="2026"><div><i>Real Time Hand Gesture Recognition for Quadruped Robot Control: Stream Level Evaluation of Temporal Modeling Architectures and Command Safety.</i> Presented; under review at the Journal of Real-Time Image Processing (Springer).</div></li>
+<li data-y="2026"><div><b>Niranjan P</b>, S. M. Bhagya P. Samarakoon, M. A. Viraj J. Muthugala, Mohan Rajesh Elara, Vatchala S. <i>Towards Autonomous Bed Making: Perception Guided VLM Planning for Mobile Manipulation.</i> Manuscript in preparation.</div></li>
+<li data-y="2026"><div><i>RGB, Depth, and Thermal Fusion for Autonomous Fruit Ripeness Detection and Selective Harvesting.</i> Manuscript in preparation.</div></li>
+</ul>
 </div></section>
 
 <section id="projects"><div class="in">
 <h2>Projects</h2>
+<p class="leg"><span><i style="background:#2f6f4e"></i>Published</span><span><i style="background:#a66a10"></i>Under review or pending</span><span><i style="background:#6b7a89"></i>In preparation</span><span><i style="background:#1a55a0"></i>Systems</span></p>
 <div class="filters" role="group" aria-label="Filter projects by status">
 <button type="button" data-f="all" aria-pressed="true">All</button>
 <button type="button" data-f="pub" aria-pressed="false">Published</button>
@@ -246,11 +267,11 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 
 <section id="experience"><div class="in">
 <h2>Experience</h2>
-<ul class="exp" style="list-style:none;padding:0">
-<li><b>Research Officer (Statistical)</b>, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore<br><span class="meta">Jul 2026 to present</span></li>
-<li><b>Visiting Scholar</b>, Robotics and Automation Research (ROAR) Lab, SUTD, Singapore<br><span class="meta">Dec 2025 to Jun 2026 · perception-guided VLM planning for autonomous bed making</span></li>
-<li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">May to Jul 2025 · remote teleoperation platform</span></li>
-<li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">Jun to Jul 2024 · coverage path planning, IEEE TENCON 2024</span></li>
+<ul class="tl">
+<li><span class="when">Jul 2026 to present</span><div><span class="ttl2">Research Officer (Statistical)</span><br>A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore</div></li>
+<li><span class="when">Dec 2025 to Jun 2026</span><div><span class="ttl2">Visiting Scholar</span>, Robotics and Automation Research (ROAR) Laboratory, SUTD, Singapore<br><span class="meta">Towards Autonomous Bed Making: Perception Guided VLM Planning for Mobile Manipulation</span></div></li>
+<li><span class="when">May to Jul 2025</span><div><span class="ttl2">Visiting Scholar</span>, ROAR Laboratory, SUTD, Singapore<br><span class="meta">Remote teleoperation platform for cleaning, spraying, washing and scrubbing</span></div></li>
+<li><span class="when">Jun to Jul 2024</span><div><span class="ttl2">Visiting Scholar</span>, ROAR Laboratory, SUTD, Singapore<br><span class="meta">Online Coverage Path Planning in LIDAR Perception Constrained Environments</span></div></li>
 </ul>
 </div></section>
 
@@ -267,10 +288,10 @@ footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:
 
 <section id="education"><div class="in">
 <h2>Education</h2>
-<ul class="exp" style="list-style:none;padding:0">
-<li><b>B.Tech, Computer Science (AI and Robotics)</b>, Vellore Institute of Technology, Chennai<br><span class="meta">2022 to 2026 · CGPA 9.15/10</span></li>
-<li><b>Higher Secondary (Grade 12)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2021 to 2022 · 91%</span></li>
-<li><b>Secondary (Grade 10)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2019 to 2020 · 95.6%</span></li>
+<ul class="tl">
+<li><span class="when">2022 to 2026</span><div><span class="ttl2">Bachelor of Technology in Computer Science (Specialization: AI &amp; Robotics)</span><br>Vellore Institute of Technology, Chennai, India<br><span class="meta">CGPA 9.15/10.0</span></div></li>
+<li><span class="when">2021 to 2022</span><div><span class="ttl2">Higher Secondary Education (Grade 12)</span><br>Chettinad Vidyashram, Chennai, India<br><span class="meta">Score 91%</span></div></li>
+<li><span class="when">2019 to 2020</span><div><span class="ttl2">Secondary Education (Grade 10)</span><br>Chettinad Vidyashram, Chennai, India<br><span class="meta">Score 95.6%</span></div></li>
 </ul>
 </div></section>
 
