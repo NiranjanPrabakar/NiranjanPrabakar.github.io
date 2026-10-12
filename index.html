@@ -14,28 +14,28 @@
 {"@context":"https://schema.org","@type":"Person","name":"Niranjan Prabakar","alternateName":"Niranjan P","jobTitle":"Research Officer","worksFor":{"@type":"Organization","name":"A*STAR Institute of Advanced Intelligence and Computing (IAIC)"},"alumniOf":"Vellore Institute of Technology","url":"https://niranjanprabakar.github.io/","sameAs":["https://scholar.google.com/citations?user=jKiIq_kAAAAJ","https://github.com/NiranjanPrabakar","https://linkedin.com/in/niranjan-p-497450278"]}
 </script>
 <style>
-:root { --bg:#e9eef3; --sheet:#ffffff; --fg:#222; --muted:#5f6b76; --link:#1a55a0; --line:#dde3e9; --band:#14243a; --bandfg:#f2f5f8; --bandmuted:#c3ceda; --bandlink:#9cc4f2; --soft:#f4f7fa; --code:#f1f4f7; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d141c; --sheet:#151d27; --fg:#e6e6e6; --muted:#9aa5b0; --link:#7fb0ea; --line:#2a3542; --band:#0a1018; --soft:#1a2430; --code:#0f1620; color-scheme: dark; } }
-:root[data-theme="dark"] { --bg:#0d141c; --sheet:#151d27; --fg:#e6e6e6; --muted:#9aa5b0; --link:#7fb0ea; --line:#2a3542; --band:#0a1018; --soft:#1a2430; --code:#0f1620; color-scheme: dark; }
+:root { --bg:#e9eef3; --sheet:#ffffff; --fg:#222; --muted:#5f6b76; --link:#1a55a0; --line:#dde3e9; --band:#14243a; --bandfg:#f2f5f8; --bandmuted:#c3ceda; --bandlink:#9cc4f2; --soft:#f4f7fa; --code:#f1f4f7; color-scheme: light; }
 * { box-sizing:border-box; }
-html { background:var(--bg); scroll-behavior:smooth; scroll-padding-top:56px; }
-body { background:var(--bg); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; margin:0; padding:32px 16px 56px; }
-a { color:var(--link); }
-a:focus-visible, button:focus-visible, summary:focus-visible { outline:2px solid var(--link); outline-offset:2px; }
-main { max-width:800px; margin:0 auto; background:var(--sheet); border:1px solid var(--line); border-radius:4px; }
-.top { background:var(--band); color:var(--bandfg); padding:36px 40px 28px; border-radius:4px 4px 0 0; position:relative; }
-.top h1 { font-size:2.1rem; font-weight:normal; margin:0 0 4px; }
-.top p { margin:0 0 10px; color:var(--bandmuted); }
+html { background:var(--sheet); scroll-behavior:smooth; scroll-padding-top:56px; }
+body { background:var(--sheet); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; margin:0; }
+.in { max-width:860px; margin:0 auto; padding:0 24px; }
+.top { background:var(--band); color:var(--bandfg); padding:48px 0 40px; }
+.hero { display:flex; gap:32px; align-items:center; }
+.hero img { width:150px; height:188px; object-fit:cover; object-position:top; border-radius:4px; border:3px solid #2c3f5c; flex:none; display:block; }
+.top h1 { font-size:2.3rem; font-weight:normal; margin:0 0 6px; }
+.top p { margin:0 0 12px; color:var(--bandmuted); }
 .top a { color:var(--bandlink); }
 .top .row { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; }
 .top button, .btn { font:inherit; font-size:0.85rem; background:transparent; color:inherit; border:1px solid currentColor; border-radius:3px; padding:2px 10px; cursor:pointer; }
 .top button { color:var(--bandlink); }
-#theme { position:absolute; top:16px; right:16px; }
-nav { position:sticky; top:0; z-index:5; background:var(--sheet); border-bottom:1px solid var(--line); display:flex; gap:4px; overflow-x:auto; padding:0 28px; font-size:0.95rem; }
-nav a { text-decoration:none; color:var(--muted); padding:12px 10px; border-bottom:2px solid transparent; white-space:nowrap; }
+nav { position:sticky; top:0; z-index:5; background:var(--sheet); border-bottom:1px solid var(--line); }
+nav .in { display:flex; gap:4px; overflow-x:auto; font-size:0.95rem; }
+nav a { text-decoration:none; color:var(--muted); padding:14px 10px; border-bottom:2px solid transparent; white-space:nowrap; }
 nav a.on { color:var(--fg); border-bottom-color:var(--link); }
-.body { padding:0 40px 40px; }
-h2 { font-size:1.25rem; margin:40px 0 12px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+section { padding:8px 0 48px; }
+section:nth-of-type(even) { background:var(--soft); }
+section:nth-of-type(even) details.proj, section:nth-of-type(even) pre.bib { background:var(--sheet); }
+h2 { font-size:1.35rem; margin:36px 0 14px; padding-bottom:4px; border-bottom:1px solid var(--line); }
 p { margin:0 0 12px; }
 ul { margin:0; padding-left:20px; }
 .pubs > li { margin-bottom:16px; }
@@ -61,19 +61,19 @@ details.proj[open] summary::before { content:"\2212"; }
 .skills dt { font-weight:bold; }
 .skills dd { margin:0; }
 .exp li { margin-bottom:12px; }
-footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-top:1px solid var(--line); }
+footer { color:var(--muted); font-size:0.88rem; padding:20px 0 28px; border-top:1px solid var(--line); }
 @media (max-width:620px) {
-  body { padding:12px 8px 32px; }
-  .top { padding:56px 20px 22px; } .body { padding:0 20px 32px; } nav { padding:0 10px; } footer { padding:16px 20px 24px; }
+  .hero { flex-direction:column; align-items:flex-start; gap:20px; }
+  .top { padding:32px 0 28px; }
   .skills { grid-template-columns:minmax(0,1fr); gap:0; } .skills dd { margin-bottom:10px; }
   .pbody { padding-left:16px; }
 }
 </style>
 </head>
 <body>
-<main>
-<header class="top">
-<button id="theme" type="button" aria-label="Switch between light and dark theme">Dark</button>
+<header class="top"><div class="in hero">
+<img src="images/niranjan.jpg" alt="Portrait of Niranjan Prabakar" width="150" height="188">
+<div>
 <h1>Niranjan Prabakar</h1>
 <p>Research Officer, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore</p>
 <div class="row">
@@ -81,22 +81,22 @@ footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-t
 <button id="copy" type="button">Copy email</button>
 <span><a href="https://scholar.google.com/citations?hl=en&amp;user=jKiIq_kAAAAJ">Google Scholar</a> · <a href="https://github.com/NiranjanPrabakar">GitHub</a> · <a href="https://linkedin.com/in/niranjan-p-497450278">LinkedIn</a></span>
 </div>
+</div></div>
 </header>
 
-<nav aria-label="Sections">
+<nav aria-label="Sections"><div class="in">
 <a href="#about">About</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a>
-</nav>
+</div></nav>
 
-<div class="body">
-
-<section id="about">
+<main>
+<section id="about"><div class="in">
 <h2>About</h2>
 <p>I work on robot manipulation and navigation. Most of my time goes to vision-language-action (VLA) models for dual-arm manipulation, and to making learned policies keep working when the scene changes, for example when an object moves a few centimetres or the workspace is laid out differently. I also work on perception-guided planning with vision-language models, and on SLAM-based navigation. I test on real robots wherever I can.</p>
 <p>My work so far combines deep learning, computer vision, SLAM and classical robotics in ROS2 systems. I am also interested in applying this to medical robotics.</p>
 <p>I finished a B.Tech in Computer Science (AI and Robotics) at VIT Chennai in 2026. I have been a visiting scholar at the Robotics and Automation Research (ROAR) Lab at SUTD, Singapore, on and off since 2024, and I joined A*STAR in July 2026.</p>
-</section>
+</div></section>
 
-<section id="publications">
+<section id="publications"><div class="in">
 <h2>Publications</h2>
 <ul class="pubs" style="list-style:none;padding:0">
 <li>Prem Sankar N, <b>Niranjan Prabakar</b>, Mukunth S, Kavin Karthik V, Anita Christaline Johnvictor. <i>Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments.</i> EPJ Web of Conferences 367, 01011, 2026 (RIACT 2026). <a href="https://www.epj-conferences.org/articles/epjconf/abs/2026/23/epjconf_riact2026_01011/epjconf_riact2026_01011.html">[paper]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
@@ -119,9 +119,9 @@ footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-t
 <li>WKR Sachinthana, <b>N Prabakar</b>, SMBP Samarakoon, MAVJ Muthugala, et al. <i>Online Coverage Path Planning in LIDAR Perception Constrained Environments.</i> IEEE TENCON 2024, pp. 133-136. <a href="https://ieeexplore.ieee.org/document/10903125">[ieee]</a></li>
 </ul>
 <p class="meta" style="margin-top:14px">In preparation or under review: bed-making with perception-guided VLM planning (in preparation), gesture control of a quadruped (IEEE Access, under review), brain tumor progression analysis (under review), fruit ripeness detection (in preparation).</p>
-</section>
+</div></section>
 
-<section id="projects">
+<section id="projects"><div class="in">
 <h2>Projects</h2>
 <div class="filters" role="group" aria-label="Filter projects by status">
 <button type="button" data-f="all" aria-pressed="true">All</button>
@@ -245,9 +245,9 @@ footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-t
 </ul>
 </div>
 </details>
-</section>
+</div></section>
 
-<section id="experience">
+<section id="experience"><div class="in">
 <h2>Experience</h2>
 <ul class="exp" style="list-style:none;padding:0">
 <li><b>Research Officer (Statistical)</b>, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore<br><span class="meta">Jul 2026 to present</span></li>
@@ -255,9 +255,9 @@ footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-t
 <li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">May to Jul 2025 · remote teleoperation platform</span></li>
 <li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">Jun to Jul 2024 · coverage path planning, IEEE TENCON 2024</span></li>
 </ul>
-</section>
+</div></section>
 
-<section id="skills">
+<section id="skills"><div class="in">
 <h2>Skills</h2>
 <dl class="skills">
 <dt>Languages</dt><dd>Python, JavaScript, MATLAB, PL/SQL</dd>
@@ -266,40 +266,22 @@ footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-t
 <dt>Embedded</dt><dd>Arduino, ESP32, IoT, servo control, sensor integration</dd>
 <dt>Tools</dt><dd>React.js, HTML/CSS, AWS</dd>
 </dl>
-</section>
+</div></section>
 
-<section id="education">
+<section id="education"><div class="in">
 <h2>Education</h2>
 <ul class="exp" style="list-style:none;padding:0">
 <li><b>B.Tech, Computer Science (AI and Robotics)</b>, Vellore Institute of Technology, Chennai<br><span class="meta">2022 to 2026 · CGPA 9.15/10</span></li>
 <li><b>Higher Secondary (Grade 12)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2021 to 2022 · 91%</span></li>
 <li><b>Secondary (Grade 10)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2019 to 2020 · 95.6%</span></li>
 </ul>
-</section>
+</div></section>
 
-</div>
-<footer>Niranjan Prabakar · Singapore</footer>
 </main>
+<footer><div class="in">Niranjan Prabakar · Singapore</div></footer>
 
 <script>
 (function () {
-  var root = document.documentElement;
-  var tbtn = document.getElementById('theme');
-  function dark() {
-    var t = root.getAttribute('data-theme');
-    if (t) return t === 'dark';
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-  function label() { tbtn.textContent = dark() ? 'Light' : 'Dark'; }
-  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
-  label();
-  tbtn.addEventListener('click', function () {
-    var next = dark() ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    label();
-  });
-
   var copy = document.getElementById('copy');
   copy.addEventListener('click', function () {
     var text = document.getElementById('email').textContent;
