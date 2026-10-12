@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Niranjan Prabakar | Robotics Researcher</title>
-<meta name="description" content="Niranjan Prabakar is a robotics researcher at A*STAR IAIC, Singapore, working on vision-language-action models, bimanual manipulation and SLAM-based autonomy.">
+<meta name="description" content="Niranjan Prabakar is a robotics researcher at A*STAR IAIC, Singapore, working on vision-language-action models, bimanual manipulation, perception-guided planning and SLAM-based autonomy.">
 <link rel="canonical" href="https://niranjanprabakar.github.io/">
 <meta property="og:title" content="Niranjan Prabakar | Robotics Researcher">
 <meta property="og:description" content="Robotics researcher at A*STAR IAIC, Singapore. Vision-language-action models, bimanual manipulation, SLAM-based autonomy.">
@@ -14,69 +14,335 @@
 {"@context":"https://schema.org","@type":"Person","name":"Niranjan Prabakar","alternateName":"Niranjan P","jobTitle":"Research Officer","worksFor":{"@type":"Organization","name":"A*STAR Institute of Advanced Intelligence and Computing (IAIC)"},"alumniOf":"Vellore Institute of Technology","url":"https://niranjanprabakar.github.io/","sameAs":["https://scholar.google.com/citations?user=jKiIq_kAAAAJ","https://github.com/NiranjanPrabakar","https://linkedin.com/in/niranjan-p-497450278"]}
 </script>
 <style>
-:root { --bg:#e9eef3; --sheet:#ffffff; --fg:#222; --muted:#666; --link:#1a55a0; --line:#dde3e9; --band:#14243a; --bandfg:#f2f5f8; }
-@media (prefers-color-scheme: dark) { :root { --bg:#0d141c; --sheet:#151d27; --fg:#e6e6e6; --muted:#9aa5b0; --link:#7fb0ea; --line:#2a3542; --band:#0a1018; --bandfg:#f2f5f8; color-scheme: dark; } }
-html { background:var(--bg); }
-body { background:var(--bg); color:var(--fg); font:17px/1.55 Georgia, "Times New Roman", serif; margin:0; padding:32px 16px 56px; }
-main { max-width:760px; margin:0 auto; background:var(--sheet); border:1px solid var(--line); border-radius:4px; overflow:hidden; }
-.top { background:var(--band); color:var(--bandfg); padding:36px 40px 28px; }
-.top h1 { color:var(--bandfg); }
-.top .sub, .top p { color:#c3ceda; }
-.top a { color:#9cc4f2; }
-.body { padding:8px 40px 40px; }
-video { width:100%; display:block; background:#000; border:1px solid var(--line); }
-figcaption { color:var(--muted); font-size:0.9rem; margin-top:6px; }
-figure { margin:0 0 8px; }
-@media (max-width:560px) { .top { padding:28px 20px 22px; } .body { padding:4px 20px 32px; } body { padding:16px 8px 32px; } }
+:root { --bg:#e9eef3; --sheet:#ffffff; --fg:#222; --muted:#5f6b76; --link:#1a55a0; --line:#dde3e9; --band:#14243a; --bandfg:#f2f5f8; --bandmuted:#c3ceda; --bandlink:#9cc4f2; --soft:#f4f7fa; --code:#f1f4f7; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d141c; --sheet:#151d27; --fg:#e6e6e6; --muted:#9aa5b0; --link:#7fb0ea; --line:#2a3542; --band:#0a1018; --soft:#1a2430; --code:#0f1620; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg:#0d141c; --sheet:#151d27; --fg:#e6e6e6; --muted:#9aa5b0; --link:#7fb0ea; --line:#2a3542; --band:#0a1018; --soft:#1a2430; --code:#0f1620; color-scheme: dark; }
+* { box-sizing:border-box; }
+html { background:var(--bg); scroll-behavior:smooth; scroll-padding-top:56px; }
+body { background:var(--bg); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; margin:0; padding:32px 16px 56px; }
 a { color:var(--link); }
-h1 { font-size:2rem; font-weight:normal; margin:0 0 4px; }
-h2 { font-size:1.2rem; margin:36px 0 10px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline:2px solid var(--link); outline-offset:2px; }
+main { max-width:800px; margin:0 auto; background:var(--sheet); border:1px solid var(--line); border-radius:4px; }
+.top { background:var(--band); color:var(--bandfg); padding:36px 40px 28px; border-radius:4px 4px 0 0; position:relative; }
+.top h1 { font-size:2.1rem; font-weight:normal; margin:0 0 4px; }
+.top p { margin:0 0 10px; color:var(--bandmuted); }
+.top a { color:var(--bandlink); }
+.top .row { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; }
+.top button, .btn { font:inherit; font-size:0.85rem; background:transparent; color:inherit; border:1px solid currentColor; border-radius:3px; padding:2px 10px; cursor:pointer; }
+.top button { color:var(--bandlink); }
+#theme { position:absolute; top:16px; right:16px; }
+nav { position:sticky; top:0; z-index:5; background:var(--sheet); border-bottom:1px solid var(--line); display:flex; gap:4px; overflow-x:auto; padding:0 28px; font-size:0.95rem; }
+nav a { text-decoration:none; color:var(--muted); padding:12px 10px; border-bottom:2px solid transparent; white-space:nowrap; }
+nav a.on { color:var(--fg); border-bottom-color:var(--link); }
+.body { padding:0 40px 40px; }
+h2 { font-size:1.25rem; margin:40px 0 12px; padding-bottom:4px; border-bottom:1px solid var(--line); }
 p { margin:0 0 12px; }
-.sub { color:var(--muted); margin-bottom:12px; }
-ul { padding-left:20px; margin:0; }
-li { margin-bottom:14px; }
-.small { color:var(--muted); font-size:0.95rem; }
+ul { margin:0; padding-left:20px; }
+.pubs > li { margin-bottom:16px; }
+.pubs .btn { color:var(--link); margin-left:4px; padding:0 8px; font-size:0.8rem; }
+pre.bib { background:var(--code); border:1px solid var(--line); padding:10px 12px; font:0.78rem/1.45 ui-monospace, Menlo, Consolas, monospace; white-space:pre-wrap; overflow-wrap:anywhere; margin:8px 0 0; }
+.filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
+.filters button { font:inherit; font-size:0.88rem; color:var(--fg); background:transparent; border:1px solid var(--line); border-radius:3px; padding:3px 12px; cursor:pointer; }
+.filters button[aria-pressed="true"] { background:var(--band); color:var(--bandfg); border-color:var(--band); }
+details.proj { border:1px solid var(--line); border-radius:3px; margin-bottom:10px; background:var(--sheet); }
+details.proj[hidden] { display:none; }
+details.proj summary { cursor:pointer; padding:12px 14px; list-style:none; display:flex; flex-wrap:wrap; gap:4px 12px; justify-content:space-between; align-items:baseline; }
+details.proj summary::-webkit-details-marker { display:none; }
+details.proj summary::before { content:"+"; font-family:ui-monospace, Menlo, monospace; color:var(--muted); width:14px; flex:none; }
+details.proj[open] summary::before { content:"\2212"; }
+.ttl { flex:1 1 280px; font-weight:bold; }
+.st { color:var(--muted); font-size:0.88rem; }
+.pbody { padding:2px 16px 14px 40px; border-top:1px solid var(--line); background:var(--soft); }
+.pbody p { margin:10px 0 6px; }
+.pbody ul { margin-top:4px; }
+.pbody li { margin-bottom:4px; }
+.meta { color:var(--muted); font-size:0.9rem; }
+.skills { display:grid; grid-template-columns:150px minmax(0,1fr); gap:6px 20px; margin:0; }
+.skills dt { font-weight:bold; }
+.skills dd { margin:0; }
+.exp li { margin-bottom:12px; }
+footer { color:var(--muted); font-size:0.88rem; padding:16px 40px 24px; border-top:1px solid var(--line); }
+@media (max-width:620px) {
+  body { padding:12px 8px 32px; }
+  .top { padding:56px 20px 22px; } .body { padding:0 20px 32px; } nav { padding:0 10px; } footer { padding:16px 20px 24px; }
+  .skills { grid-template-columns:minmax(0,1fr); gap:0; } .skills dd { margin-bottom:10px; }
+  .pbody { padding-left:16px; }
+}
 </style>
 </head>
 <body>
-
 <main>
-<div class="top">
+<header class="top">
+<button id="theme" type="button" aria-label="Switch between light and dark theme">Dark</button>
 <h1>Niranjan Prabakar</h1>
-<p class="sub">Research Officer, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore</p>
-<p style="margin:0">niranjanprabakar325@gmail.com<br>
-<a href="https://scholar.google.com/citations?hl=en&amp;user=jKiIq_kAAAAJ">Google Scholar</a> · <a href="https://github.com/NiranjanPrabakar">GitHub</a> · <a href="https://linkedin.com/in/niranjan-p-497450278">LinkedIn</a></p>
+<p>Research Officer, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore</p>
+<div class="row">
+<span id="email">niranjanprabakar325@gmail.com</span>
+<button id="copy" type="button">Copy email</button>
+<span><a href="https://scholar.google.com/citations?hl=en&amp;user=jKiIq_kAAAAJ">Google Scholar</a> · <a href="https://github.com/NiranjanPrabakar">GitHub</a> · <a href="https://linkedin.com/in/niranjan-p-497450278">LinkedIn</a></span>
 </div>
+</header>
+
+<nav aria-label="Sections">
+<a href="#about">About</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a>
+</nav>
+
 <div class="body">
 
+<section id="about">
 <h2>About</h2>
-<p>I work on robot manipulation and navigation. Most of my time goes to vision-language-action models for dual-arm manipulation and to getting learned policies to keep working when the scene changes, for example when an object moves a few centimetres or the workspace is laid out differently. I also work on perception-guided planning with vision-language models and on SLAM-based navigation, and I care about testing on real robots. I am also interested in applying this to medical robotics.</p>
-<p>I finished my B.Tech in Computer Science (AI and Robotics) at VIT Chennai in 2026 and have been a visiting scholar at the ROAR Lab at SUTD on and off since 2024.</p>
+<p>I work on robot manipulation and navigation. Most of my time goes to vision-language-action (VLA) models for dual-arm manipulation, and to making learned policies keep working when the scene changes, for example when an object moves a few centimetres or the workspace is laid out differently. I also work on perception-guided planning with vision-language models, and on SLAM-based navigation. I test on real robots wherever I can.</p>
+<p>My work so far combines deep learning, computer vision, SLAM and classical robotics in ROS2 systems. I am also interested in applying this to medical robotics.</p>
+<p>I finished a B.Tech in Computer Science (AI and Robotics) at VIT Chennai in 2026. I have been a visiting scholar at the Robotics and Automation Research (ROAR) Lab at SUTD, Singapore, on and off since 2024, and I joined A*STAR in July 2026.</p>
+</section>
 
+<section id="publications">
 <h2>Publications</h2>
-<ul>
-<li>Prem Sankar N, <b>Niranjan Prabakar</b>, Mukunth S, Kavin Karthik V, Anita Christaline Johnvictor. <i>Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments.</i> EPJ Web of Conferences 367, 01011, 2026. <a href="https://www.epj-conferences.org/articles/epjconf/abs/2026/23/epjconf_riact2026_01011/epjconf_riact2026_01011.html">[paper]</a></li>
-<li><b>Niranjan Prabakar</b>, Abhinav Balakrishnan, Mukunth S, Vergin Raja Sarobin M. <i>Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification.</i> IEEE ICSCSS 2025. <a href="https://doi.org/10.1109/ICSCSS64956.2025.11500648">[doi]</a></li>
+<ul class="pubs" style="list-style:none;padding:0">
+<li>Prem Sankar N, <b>Niranjan Prabakar</b>, Mukunth S, Kavin Karthik V, Anita Christaline Johnvictor. <i>Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments.</i> EPJ Web of Conferences 367, 01011, 2026 (RIACT 2026). <a href="https://www.epj-conferences.org/articles/epjconf/abs/2026/23/epjconf_riact2026_01011/epjconf_riact2026_01011.html">[paper]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
+<pre class="bib" hidden>@article{prem2026sar,
+  title   = {Autonomous Search and Rescue Robot with Vision Based Object Detection and SLAM-Enabled Navigation in Hazardous Environments},
+  author  = {Prem Sankar, N and Prabakar, Niranjan and Mukunth, S and Karthik, V Kavin and Johnvictor, Anita Christaline},
+  journal = {EPJ Web of Conferences},
+  volume  = {367},
+  pages   = {01011},
+  year    = {2026}
+}</pre></li>
+<li><b>Niranjan Prabakar</b>, Abhinav Balakrishnan, Mukunth S, Vergin Raja Sarobin M. <i>Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification.</i> IEEE ICSCSS 2025. <a href="https://doi.org/10.1109/ICSCSS64956.2025.11500648">[doi]</a><button class="btn bibbtn" type="button" aria-expanded="false">Cite</button>
+<pre class="bib" hidden>@inproceedings{prabakar2025rainfall,
+  title     = {Enhanced Deep Ensemble Framework for High-Resolution Rainfall Forecasting: Multi-Scale Feature Integration and Uncertainty Quantification},
+  author    = {Prabakar, Niranjan and Balakrishnan, Abhinav and Mukunth, S and Sarobin, Vergin Raja M},
+  booktitle = {3rd International Conference on Sustainable Computing and Smart Systems (ICSCSS)},
+  year      = {2025},
+  doi       = {10.1109/ICSCSS64956.2025.11500648}
+}</pre></li>
 <li>WKR Sachinthana, <b>N Prabakar</b>, SMBP Samarakoon, MAVJ Muthugala, et al. <i>Online Coverage Path Planning in LIDAR Perception Constrained Environments.</i> IEEE TENCON 2024, pp. 133-136. <a href="https://ieeexplore.ieee.org/document/10903125">[ieee]</a></li>
 </ul>
+<p class="meta" style="margin-top:14px">In preparation or under review: bed-making with perception-guided VLM planning (in preparation), gesture control of a quadruped (IEEE Access, under review), brain tumor progression analysis (under review), fruit ripeness detection (in preparation).</p>
+</section>
 
+<section id="projects">
 <h2>Projects</h2>
-<ul>
-<li><b>Autonomous bed making with perception-guided VLM planning.</b> A mobile manipulator that plans bed-making steps with a vision-language model, using perception to cut down spatial mistakes. Built at SUTD and run on a Kinova Gen3. Paper in preparation.</li>
-<li><b>Gesture control of a quadruped robot.</b> Comparison of temporal models for hand-gesture recognition on live video, plus a safety gate that blocks wrong commands. Under review.</li>
-<li><b>Remote teleoperation platform (SUTD).</b> FastAPI and ROS2 interface for remote cleaning and scrubbing, with multi-view RealSense streaming and PLC control over Modbus and Redis.</li>
-<li><b>Fruit ripeness detection.</b> RGB, depth and thermal fusion for ripeness grading, connected to a 6-DOF arm in ROS2 and MoveIt2. In preparation.</li>
-<li><b>ESP32 6-DOF robotic arm.</b> Browser control over WebSockets with record and playback. <a href="https://github.com/NiranjanPrabakar/Kinematics">[code]</a></li>
-</ul>
+<div class="filters" role="group" aria-label="Filter projects by status">
+<button type="button" data-f="all" aria-pressed="true">All</button>
+<button type="button" data-f="pub" aria-pressed="false">Published</button>
+<button type="button" data-f="rev" aria-pressed="false">Under review</button>
+<button type="button" data-f="prep" aria-pressed="false">In preparation</button>
+<button type="button" data-f="sys" aria-pressed="false">Systems</button>
+</div>
 
-<h2>Experience</h2>
+<details class="proj" data-s="prep">
+<summary><span class="ttl">Towards Autonomous Bed Making: Perception Guided VLM Planning for Mobile Manipulation</span><span class="st">SUTD ROAR Lab · Dec 2025 to Jun 2026 · manuscript in preparation, 1st author</span></summary>
+<div class="pbody">
+<p>A mobile manipulator that makes a bed on its own. A vision-language model plans the steps, and a perception layer checks what the model says against what the cameras actually see, which cuts down spatial hallucinations.</p>
 <ul>
-<li>Jul 2026 to now. Research Officer (Statistical), A*STAR IAIC, Singapore.</li>
-<li>Dec 2025 to Jun 2026, May to Jul 2025, Jun to Jul 2024. Visiting Scholar, Robotics and Automation Research (ROAR) Lab, SUTD.</li>
-<li>2022 to 2026. B.Tech, Computer Science (AI and Robotics), Vellore Institute of Technology, Chennai. CGPA 9.15/10.</li>
+<li>Built the PGVP system, which reduced VLM spatial hallucinations by 92.8% and improved object recall by 34.9 percentage points.</li>
+<li>Built a causal step-learning engine that reached 97.5% step accuracy across 81 demonstration episodes, with no hand-written step definitions.</li>
+<li>Trained an 11-class YOLOv8 and SAM segmentation model on 5,562 annotated images (mAP50 0.855), and a depth fusion module with 92.5% accuracy.</li>
+<li>Validated on a Kinova Gen3 across 4 obstacle scenes with 100% task completion and no human intervention.</li>
 </ul>
+</div>
+</details>
+
+<details class="proj" data-s="rev">
+<summary><span class="ttl">Real-Time Hand Gesture Recognition for Quadruped Robot Control</span><span class="st">Jul 2025 to present · submitted to IEEE Access, 1st author</span></summary>
+<div class="pbody">
+<p>A study of how gesture recognition models behave on live video streams, and how to stop a wrong gesture from becoming a wrong robot command.</p>
+<ul>
+<li>Built an 18-clip, 6,975-frame video corpus with a public evaluation protocol.</li>
+<li>Compared 9 architectures behind MediaPipe hand detection. Models that scored perfectly on static images kept only 58 to 90% accuracy on real streams.</li>
+<li>Found the same pass-through failure in all 9 architectures, and found CNN and CNN-LSTM performed the same (p &gt; 0.05).</li>
+<li>Designed a cross-validated 667 ms dwell gate that cut wrong commands to one residual failure. A state space model matched its latency with 75% fewer parameters.</li>
+</ul>
+<p class="meta">Presented at a conference; manuscript submitted.</p>
+</div>
+</details>
+
+<details class="proj" data-s="pub">
+<summary><span class="ttl">Autonomous Search and Rescue Robot with Vision-Based Detection and SLAM Navigation</span><span class="st">Jul to Nov 2025 · published, EPJ Web of Conferences 2026</span></summary>
+<div class="pbody">
+<p>A ground robot that explores an unknown, hazardous space, builds a map, and reports fires and victims on that map.</p>
+<ul>
+<li>Trained YOLOv8n for fire and smoke detection on a 3,000-image dataset (mAP50 0.84, precision 0.87, recall 0.83).</li>
+<li>Detected victims with HSV colour segmentation and a coordinate transformation that places each detection in the global map frame.</li>
+<li>Localized with SLAM Toolbox on a TurtleBot3 Waffle, with 4.2 cm mean pose error.</li>
+<li>Designed a deterministic frontier exploration algorithm: 97.3% map coverage in 8.4 minutes and 91.3% Nav2 navigation success, ahead of baseline strategies.</li>
+</ul>
+</div>
+</details>
+
+<details class="proj" data-s="pub">
+<summary><span class="ttl">Online Coverage Path Planning in LIDAR Perception Constrained Environments</span><span class="st">SUTD ROAR Lab · Jun to Jul 2024 · published, IEEE TENCON 2024</span></summary>
+<div class="pbody">
+<p>Cleaning robots rely on LiDAR, but LiDAR misses glass, thin wires, sockets and some carpets. This work adds camera-based detection for those obstacles.</p>
+<ul>
+<li>Labeled, annotated and curated a 4,303-image dataset of obstacle classes that LiDAR cannot reliably detect.</li>
+<li>Trained and compared YOLOv8, RetinaNet and Faster R-CNN. The best model (84% precision, 78.78% mAP@0.5) was selected for deployment.</li>
+</ul>
+</div>
+</details>
+
+<details class="proj" data-s="pub">
+<summary><span class="ttl">High-Resolution Rainfall Forecasting with a Deep Ensemble</span><span class="st">Dec 2024 to Apr 2025 · published, IEEE ICSCSS 2025, 1st author</span></summary>
+<div class="pbody">
+<p>A rainfall forecasting model that reports how confident it is, not just a number.</p>
+<ul>
+<li>Designed an attention-enhanced LSTM with adaptive gradient boosting fusion, weighting ensemble members by prediction confidence.</li>
+<li>Built uncertainty quantification with Monte Carlo dropout and ensemble variance.</li>
+<li>Engineered multi-scale temporal features from 115 years of IMD climate data.</li>
+<li>Reached a 23.4% RMSE reduction, 18.7% MAE improvement and 87.3% reliability score.</li>
+</ul>
+</div>
+</details>
+
+<details class="proj" data-s="rev">
+<summary><span class="ttl">Brain Tumor Progression Analysis with a Deterministic Finite Automaton</span><span class="st">Jul to Nov 2025 · submitted, 1st author</span></summary>
+<div class="pbody">
+<p>A pipeline that segments a brain tumor, tracks how it progresses as a sequence of states, and estimates risk.</p>
+<ul>
+<li>Trained a YOLOv12 segmentation model (93.81% mAP@50, 90.76% precision, 88.0% recall).</li>
+<li>Designed a 19-state DFA over 6 morphological features to model tumor progression.</li>
+<li>Added Bayesian risk stratification, which reached 99.3% confidence on a normal brain control case.</li>
+<li>Built a treatment response and surgical candidacy module. Gemini 2.5 Flash turns the results into structured seven-section clinical reports.</li>
+</ul>
+<p class="meta">Presented at a conference; manuscript submitted, publication pending.</p>
+</div>
+</details>
+
+<details class="proj" data-s="prep">
+<summary><span class="ttl">RGB, Depth and Thermal Fusion for Fruit Ripeness Detection and Selective Harvesting</span><span class="st">Nov 2025 to present · manuscript in preparation</span></summary>
+<div class="pbody">
+<p>A detector that judges ripeness and defects from colour, depth and heat, then guides a robot arm to pick only ripe fruit.</p>
+<ul>
+<li>Built a dual-branch RGB and depth YOLOv8n detector with a downstream thermal classifier for ripeness and defect grading on apple, banana and mango.</li>
+<li>Reached 95.8% mAP@0.5, which is 6.8 points above RGB only and 3.2 points above RGB plus depth.</li>
+<li>Validated the thermal signal with a five-stage study that showed the climacteric temperature peak.</li>
+<li>Integrated with a 6-DOF manipulator in ROS2 and MoveIt2: 92% success and 100% selectivity in Gazebo.</li>
+</ul>
+</div>
+</details>
+
+<details class="proj" data-s="sys">
+<summary><span class="ttl">Remote Teleoperation Platform</span><span class="st">SUTD ROAR Lab · May to Jul 2025</span></summary>
+<div class="pbody">
+<p>A web platform for operating a cleaning robot from a distance.</p>
+<ul>
+<li>Built a FastAPI backend and ROS2 topic and service nodes for actuator control, syncing live state through Redis with the PLC's Modbus I/O process.</li>
+<li>Built a responsive frontend with multi-view RealSense D457 streaming.</li>
+<li>Delivered a scalable platform for remote cleaning, spraying, washing and scrubbing.</li>
+</ul>
+</div>
+</details>
+
+<details class="proj" data-s="sys">
+<summary><span class="ttl">ESP32 Wi-Fi Controlled Web Interface for a 6-DOF Robotic Arm</span><span class="st">Jul to Nov 2024 · <a href="https://github.com/NiranjanPrabakar/Kinematics">code</a></span></summary>
+<div class="pbody">
+<p>A low-cost arm you control from a web page.</p>
+<ul>
+<li>Built real-time two-way control of the arm over AsyncWebSocket.</li>
+<li>Implemented record and playback with timestamped motion sequences.</li>
+<li>Built the PWM servo control across a 0 to 180 degree range.</li>
+</ul>
+</div>
+</details>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<ul class="exp" style="list-style:none;padding:0">
+<li><b>Research Officer (Statistical)</b>, A*STAR Institute of Advanced Intelligence and Computing (IAIC), Singapore<br><span class="meta">Jul 2026 to present</span></li>
+<li><b>Visiting Scholar</b>, Robotics and Automation Research (ROAR) Lab, SUTD, Singapore<br><span class="meta">Dec 2025 to Jun 2026 · perception-guided VLM planning for autonomous bed making</span></li>
+<li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">May to Jul 2025 · remote teleoperation platform</span></li>
+<li><b>Visiting Scholar</b>, ROAR Lab, SUTD<br><span class="meta">Jun to Jul 2024 · coverage path planning, IEEE TENCON 2024</span></li>
+</ul>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<dl class="skills">
+<dt>Languages</dt><dd>Python, JavaScript, MATLAB, PL/SQL</dd>
+<dt>Robotics</dt><dd>ROS2, Gazebo, Nav2, SLAM, computer vision, OpenCV, MediaPipe</dd>
+<dt>Machine learning</dt><dd>LSTM, gradient boosting, random forest, Bayesian networks, vision-language models</dd>
+<dt>Embedded</dt><dd>Arduino, ESP32, IoT, servo control, sensor integration</dd>
+<dt>Tools</dt><dd>React.js, HTML/CSS, AWS</dd>
+</dl>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<ul class="exp" style="list-style:none;padding:0">
+<li><b>B.Tech, Computer Science (AI and Robotics)</b>, Vellore Institute of Technology, Chennai<br><span class="meta">2022 to 2026 · CGPA 9.15/10</span></li>
+<li><b>Higher Secondary (Grade 12)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2021 to 2022 · 91%</span></li>
+<li><b>Secondary (Grade 10)</b>, Chettinad Vidyashram, Chennai<br><span class="meta">2019 to 2020 · 95.6%</span></li>
+</ul>
+</section>
 
 </div>
+<footer>Niranjan Prabakar · Singapore</footer>
 </main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var tbtn = document.getElementById('theme');
+  function dark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function label() { tbtn.textContent = dark() ? 'Light' : 'Dark'; }
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  label();
+  tbtn.addEventListener('click', function () {
+    var next = dark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+  });
+
+  var copy = document.getElementById('copy');
+  copy.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    function done(ok) { copy.textContent = ok ? 'Copied' : 'Select and copy'; setTimeout(function () { copy.textContent = 'Copy email'; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { sel(); done(false); });
+    } else { sel(); done(false); }
+    function sel() { var r = document.createRange(); r.selectNodeContents(document.getElementById('email')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+
+  document.querySelectorAll('.bibbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = b.parentNode.querySelector('pre.bib');
+      var open = pre.hidden;
+      pre.hidden = !open;
+      b.setAttribute('aria-expanded', String(open));
+      b.textContent = open ? 'Hide' : 'Cite';
+      if (open) { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    });
+  });
+
+  var fbtns = document.querySelectorAll('.filters button');
+  var projs = document.querySelectorAll('details.proj');
+  fbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      fbtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      var f = b.getAttribute('data-f');
+      projs.forEach(function (p) { p.hidden = !(f === 'all' || p.getAttribute('data-s') === f); });
+    });
+  });
+
+  var links = document.querySelectorAll('nav a');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('main section').forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
 </body>
 </html>
